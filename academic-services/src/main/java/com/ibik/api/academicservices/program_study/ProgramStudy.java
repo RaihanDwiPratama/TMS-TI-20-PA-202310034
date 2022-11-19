@@ -42,71 +42,116 @@ public class ProgramStudy implements Serializable {
   public ProgramStudy() {
   }
 
-  public ProgramStudy(
-    int id, 
-    String name, 
-    String description, 
-    String code,
-    int program_id,
-    int faculty_id,
-    int departement_id,
-    boolean is_active
-    ) {
+  
+
+  public ProgramStudy(int id, @NotEmpty(message = "Name is required") String name, String description,
+      @NotEmpty(message = "Code is required") String code, int program_id, int faculty_id, int departement_id,
+      boolean is_active) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.code = code;
     this.program_id = program_id;
-    this.is_active = is_active;
     this.faculty_id = faculty_id;
     this.departement_id = departement_id;
+    this.is_active = is_active;
   }
+
+
 
   public int getId() {
     return id;
   }
 
+
+
   public void setId(int id) {
     this.id = id;
   }
+
+
 
   public String getName() {
     return name;
   }
 
+
+
   public void setName(String name) {
     this.name = name;
   }
+
+
 
   public String getDescription() {
     return description;
   }
 
+
+
   public void setDescription(String description) {
     this.description = description;
   }
+
+
 
   public String getCode() {
     return code;
   }
 
+
+
   public void setCode(String code) {
     this.code = code;
   }
 
-  public int getprogram_id() {
+
+
+  public int getProgram_id() {
     return program_id;
   }
 
-  public int getfaculty_id() {
+
+
+  public void setProgram_id(int program_id) {
+    this.program_id = program_id;
+  }
+
+
+
+  public int getFaculty_id() {
     return faculty_id;
   }
 
-  public int getdepartment_id() {
+
+
+  public void setFaculty_id(int faculty_id) {
+    this.faculty_id = faculty_id;
+  }
+
+
+
+  public int getDepartement_id() {
     return departement_id;
   }
+
+
+
+  public void setDepartement_id(int departement_id) {
+    this.departement_id = departement_id;
+  }
+
+
+
+  public boolean isIs_active() {
+    return is_active;
+  }
+
+
 
   public void setIs_active(boolean is_active) {
     this.is_active = is_active;
   }
+
+  
 }

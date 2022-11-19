@@ -2,7 +2,7 @@ package com.ibik.api.academicservices.students;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ibik.api.academicservices.dto.ResponseData;
+import com.ibik.api.academicservices.dto.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,5 +161,21 @@ public class StudentController {
         
     }
 
+    @PostMapping("/search") 
+    public ResponseEntity<ResponseData<Student>> getStudentByName(@RequestBody SearchData SearchData) { 
+        ResponseData<Student> responseData = new ResponseData<>(); 
+ 
+        try { 
+            Iterable<Student> values = studentServices.findByName(SearchData.getSearchKey()); 
+            responseData.setResult(true); 
+            responseData.getMessage(); 
+            responseData.setData(values); 
+            return ResponseEntity.ok(responseData); 
+        } catch (Exception ex) { 
+            responseData.getMessage().add(ex.getMessage()); 
+            responseData.setData(null); 
+            responseData.setResult(false); 
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData); 
+        } 
+    }
 }
-
